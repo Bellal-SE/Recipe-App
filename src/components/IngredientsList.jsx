@@ -75,7 +75,6 @@ export default function IngredientsList(props) {
             onClick={() => {
               deleteModel();
               setDeletingIngredient(item);
-              // handleDelete(item.id);
             }}
           >
             <svg
@@ -140,10 +139,7 @@ export default function IngredientsList(props) {
               </p>
             </div>
             <button
-              onClick={
-                // props.handleAiResponse();
-                handleRateLimiting
-              }
+              onClick={handleRateLimiting}
               className="bg-[#CA6A4E] h-12  cursor-pointer p-2 rounded-md text-white font-semibold transition duration-500 active:-translate-1 hover:-translate-y-1 hover:bg-[#7c5143f8]"
             >
               Get a recipe

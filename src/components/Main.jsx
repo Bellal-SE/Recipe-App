@@ -32,9 +32,6 @@ export default function Main() {
   }
 
   function addIngredient(formData) {
-    // e.preventDefault();
-    // const formEl = e.currentTarget;
-    // const formData = new FormData(formEl);
     const newIngredient = formData.get("ingredientInput");
     if (newIngredient.trim() === "") {
       setShowModel((prev) => !prev);
@@ -61,7 +58,6 @@ export default function Main() {
     setIngredientId((prev) => prev + 1);
     const ingredientObj = { name: CapitalizedIngredient, id: ingredientId };
     setIngredients((prev) => [...prev, ingredientObj]);
-    // console.log(Object.fromEntries(formData));
   }
 
   async function generatedResponse() {
