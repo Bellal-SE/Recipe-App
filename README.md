@@ -1,16 +1,33 @@
-# React + Vite
+# Recipe App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern AI-powered recipe generator built with React. Enter the ingredients you have, and the app generates a recipe based on your selection.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+* Add and manage ingredients
+* Prevent duplicate ingredients
+* Generate AI-powered recipes
+* Markdown-rendered recipe responses
+* Responsive UI for different screen sizes
+* Loading and feedback states for a better user experience
 
-## React Compiler
+## Tech Stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+* React
+* JavaScript
+* Tailwind CSS
+* Node.js / Express
+* Hugging Face API
 
-## Expanding the ESLint configuration
+## Getting Started
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+```bash
+npm install
+npm run dev
+```
+
+Create a `.env` file and add your API credentials as required by the project.
+
+## Project Purpose
+
+Built as a hands-on React project to practice component architecture, state management, API integration, responsive design, and AI integration.
