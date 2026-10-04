@@ -78,7 +78,7 @@ export default function Main() {
     // CHANGING LOADER LABEL.
     const interval = setInterval(() => {
       setMessageIndex((prev) => (prev + 1) % messages.length);
-    }, 3000);
+    }, 1500);
     try {
       const result = await getRecipeFromMistral(ingredients);
       setPreviousIngredients([...ingredients]);

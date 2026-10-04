@@ -35,7 +35,7 @@ export default function IngredientsList(props) {
   const list = props.ingredients.map((item) => {
     return (
       <div
-        className="md:flex items-center ml-5 md:ml-15 space-y-2 p-1"
+        className="md:flex items-center ml-5 md:ml-15 space-y-2 p-1 text-[clamp(1rem,1.4vw,1.2rem)]"
         key={item.id}
       >
         <li
@@ -48,7 +48,7 @@ export default function IngredientsList(props) {
         <div className="space-x-2">
           <button
             type="button"
-            className="cursor-pointer inline-flex items-center gap-2 rounded-lg border border-orange-400/40 bg-orange-500/10 px-3.5 py-2 text-sm font-medium text-orange-300 transition-colors hover:bg-orange-500/20 hover:text-orange-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-orange-400 focus-visible:ring-offset-2 focus-visible:ring-offset-[#1e1e1e] active:scale-95"
+            className="cursor-pointer inline-flex items-center gap-2 rounded-lg border border-orange-400/40 bg-[#D97757]/30 px-3.5 py-2 text-sm font-medium text-orange-300 transition-colors hover:bg-orange-500/20 hover:text-orange-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-orange-400 focus-visible:ring-offset-2 focus-visible:ring-offset-[#1e1e1e] active:scale-95"
             onClick={() => {
               editModel();
               setEditingIngredient(item);
@@ -124,7 +124,7 @@ export default function IngredientsList(props) {
       ) : null}
 
       <section className="flex flex-col items-center justify-center mt-3 animate-[fadeIn_1s_ease-in-out]">
-        <h2 className="text-2xl font-bold w-[clamp(250px,50vw,620px)] md:mr-[185.69px]">
+        <h2 className="text-[clamp(1.5rem,3vw,2rem)] text-[#D97757] font-bold w-[clamp(250px,50vw,620px)] md:mr-[185.69px]">
           Ingredients on hand:
         </h2>
         <ul className="list-disc flex flex-col ml-8 md:ml-0 mt-2 items-center min-h-32">
@@ -150,7 +150,7 @@ export default function IngredientsList(props) {
     </>
   ) : (
     <div className="flex flex-col items-center justify-center mt-3 animate-[fadeIn_1s_ease-in-out]">
-      <h2 className="text-2xl font-bold w-[clamp(250px,50vw,620px)] md:mr-[185.69px]">
+      <h2 className="text-2xl text-[#D97757] font-bold w-[clamp(250px,50vw,620px)] md:mr-[185.69px]">
         Please enter at least 4 ingredients
       </h2>
     </div>

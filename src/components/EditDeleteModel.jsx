@@ -1,7 +1,10 @@
 import { useState } from "react";
 export default function EditDeleteModel(props) {
+  console.log(`ingredients : ${JSON.stringify(props.ingredients)}`);
+  console.log(`PrevIngredients : ${JSON.stringify(props.previousIngredients)}`);
   const [inputValue, setInputValue] = useState("");
   function handleModelEdit(currentItem) {
+    console.log(currentItem);
     if (
       JSON.stringify(props.previousIngredients) ===
       JSON.stringify(props.ingredients)
