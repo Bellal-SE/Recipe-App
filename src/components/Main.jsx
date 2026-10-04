@@ -6,10 +6,10 @@ import { getRecipeFromMistral } from "../ai";
 export default function Main() {
   const [ingredientId, setIngredientId] = useState(5);
   const [ingredients, setIngredients] = useState([
-    { name: "chicken", id: 1 },
-    { name: "oregano", id: 2 },
-    { name: "onions", id: 3 },
-    { name: "tomatoes", id: 4 },
+    // { name: "chicken", id: 1 },
+    // { name: "oregano", id: 2 },
+    // { name: "onions", id: 3 },
+    // { name: "tomatoes", id: 4 },
   ]);
 
   const [recipeShown, setRecipeShown] = useState(false);
@@ -17,6 +17,7 @@ export default function Main() {
   const [modelMsg, setModelMsg] = useState();
   const [genRecipe, setGenRecipe] = useState("");
   const [previousIngredients, setPreviousIngredients] = useState([]);
+  const [canRequest, setCanRequest] = useState(true);
 
   const messages = [
     "Checking your ingredients...",
@@ -65,13 +66,17 @@ export default function Main() {
     const hasChanged =
       JSON.stringify(ingredients) === JSON.stringify(previousIngredients);
     if (hasChanged) {
-      setShowModel((prev) => !prev);
+      setShowModel(true);
       setModelMsg({
         headMsg: "Same Ingredients!",
         paraMsg: "Add more ingredients to suggest a new recipe.",
       });
       return;
     }
+    setCanRequest(false);
+    setTimeout(() => {
+      setCanRequest(true);
+    }, 5000);
     setGenRecipe("");
     setRecipeShown(true);
     setMessageIndex(0);
@@ -119,6 +124,7 @@ export default function Main() {
         setPreviousIngredients={setPreviousIngredients}
         setShowModel={setShowModel}
         setModelMsg={setModelMsg}
+        canRequest={canRequest}
       />
 
       <Recipe

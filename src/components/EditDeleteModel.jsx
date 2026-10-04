@@ -1,14 +1,16 @@
 import { useState } from "react";
 export default function EditDeleteModel(props) {
-  console.log(`ingredients : ${JSON.stringify(props.ingredients)}`);
-  console.log(`PrevIngredients : ${JSON.stringify(props.previousIngredients)}`);
   const [inputValue, setInputValue] = useState("");
   function handleModelEdit(currentItem) {
-    console.log(currentItem);
-    if (
-      JSON.stringify(props.previousIngredients) ===
-      JSON.stringify(props.ingredients)
-    ) {
+    if (inputValue.trim() === "") return;
+    const newIngredient = inputValue.trim().toLowerCase();
+    const isDuplicate = props.ingredients.some(
+      (ingredient) =>
+        ingredient.id !== currentItem.id &&
+        ingredient.name.toLowerCase() === newIngredient
+    );
+
+    if (isDuplicate) {
       props.editModel();
       props.setShowModel((prev) => !prev);
       props.setModelMsg({
@@ -52,6 +54,7 @@ export default function EditDeleteModel(props) {
             New value
           </label>
           <input
+            autoComplete="off"
             autoFocus
             value={inputValue}
             onChange={(e) => setInputValue(e.target.value)}

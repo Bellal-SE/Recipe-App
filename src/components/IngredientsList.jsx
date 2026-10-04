@@ -1,5 +1,6 @@
 import { useState } from "react";
 import EditDeleteModel from "./EditDeleteModel";
+import RateLimitModel from "./RateLimitModel";
 
 export default function IngredientsList(props) {
   const [deleteBtn, setDeleteBtn] = useState(false);
@@ -7,7 +8,8 @@ export default function IngredientsList(props) {
   const [editingIngredient, setEditingIngredient] = useState(null);
   const [deletingIngredient, setDeletingIngredient] = useState(null);
   const [editHighlight, setEditHighlight] = useState(null);
-  const [rateLimiter, setRateLimiter] = useState(true);
+  const [rateModel, setRateModel] = useState(false);
+
   if (editHighlight !== null)
     setTimeout(() => {
       setEditHighlight(null);
@@ -22,14 +24,11 @@ export default function IngredientsList(props) {
   }
 
   function handleRateLimiting() {
-    if (!rateLimiter) {
-      setTimeout(() => {
-        setRateLimiter((prev) => !prev);
-      }, 5000);
+    if (!props.canRequest) {
+      setRateModel(true);
       return;
     }
     props.handleAiResponse();
-    setRateLimiter((prev) => !prev);
   }
 
   const list = props.ingredients.map((item) => {
@@ -122,6 +121,10 @@ export default function IngredientsList(props) {
           setIngredients={props.setIngredients}
         />
       ) : null}
+
+      {props.canRequest ? null : (
+        <RateLimitModel rateModel={rateModel} setRateModel={setRateModel} />
+      )}
 
       <section className="flex flex-col items-center justify-center mt-3 animate-[fadeIn_1s_ease-in-out]">
         <h2 className="text-[clamp(1.5rem,3vw,2rem)] text-[#D97757] font-bold w-[clamp(250px,50vw,620px)] md:mr-[185.69px]">
